@@ -34,6 +34,17 @@ def two_number_sum(array, target_sum)
   res
 end
 
-print two_number_sum([3, 5, -4, 8, 11, 1, -1, 6], 10)
+# print two_number_sum([3, 5, -4, 8, 11, 1, -1, 6], 10)
 
+def max_sub_array(nums)
+  return nums[0] if nums.length == 1
+  max = nums[0]
 
+  (1...nums.length).each do |i|
+    nums[i] = [nums[i], nums[i] + nums[i - 1]].max
+    max = [max, nums[i]].max
+  end
+  max
+end
+
+# puts max_sub_array([-2,1,-3,4,-1,2,1,-5,4])
